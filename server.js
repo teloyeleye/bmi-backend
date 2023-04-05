@@ -27,6 +27,14 @@ const PORT = process.env.PORT;
 // Database Connection
 dbConnect();
 
+const userRoutes = require("./routes/user-routes");
+
+app.get("/", function (req, res) {
+  res.send(`BMI Server is live`);
+});
+
+app.use("/user", userRoutes.routes);
+
 app.listen({ port: PORT }, async () => {
   console.log(`Server is running on localhost ${PORT}`);
 });
