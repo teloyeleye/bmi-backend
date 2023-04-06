@@ -114,6 +114,8 @@ const loginUser = async (req, res) => {
             name: result.name,
             role: result.role,
             bmi: result.bmi,
+            id: result.id,
+            createdAt: result.createdAt,
           });
         } else {
           return res.status(400).json({ error: "Credential Doesn't Match" });
@@ -141,7 +143,11 @@ const updateUserBMI = async (req, res) => {
       { upsert: true }
     )
       .then((result) => {
-        res.send({ success: "User BMI Updated Successfully" });
+        res.status(200).send({
+          message: "User BMI Updated Successfully",
+          bmi: result.bmi,
+        });
+        // res.send({ success: "User BMI Updated Successfully" });
       })
       .catch((err) => {
         console.log(err);
