@@ -42,7 +42,9 @@ const createUser = async (req, res) => {
 // Fetch all Users
 const getUsers = async (req, res) => {
   try {
-    await User.find()
+    await User.find({
+      role: "user",
+    })
       .sort({ createdAt: -1 })
       .then((result) => {
         res.json(result);
