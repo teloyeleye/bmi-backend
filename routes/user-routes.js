@@ -2,6 +2,7 @@ const express = require("express");
 const {
   createUser,
   getUsers,
+  getAdmins,
   viewUser,
   loginUser,
   updateUserBMI,
@@ -11,6 +12,7 @@ const {
 const router = express.Router();
 
 router.get("/all", getUsers);
+router.get("/admin", getAdmins);
 router.post("/create", createUser);
 router.get("/view/:id", viewUser);
 router.post("/login", loginUser);

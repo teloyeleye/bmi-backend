@@ -40,6 +40,22 @@ const createUser = async (req, res) => {
 };
 
 // Fetch all Users
+const getAdmins = async (req, res) => {
+  try {
+    await User.find({ role: "admin" })
+      .sort({ createdAt: -1 })
+      .then((result) => {
+        res.json(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  } catch (err) {
+    return res.status(500).json({ error: "Error Fetching Users" });
+  }
+};
+
+// Fetch all Users
 const getUsers = async (req, res) => {
   try {
     await User.find({
@@ -193,6 +209,7 @@ const truncateAllUser = async (req, res) => {
 
 module.exports = {
   createUser,
+  getAdmins,
   getUsers,
   viewUser,
   loginUser,
