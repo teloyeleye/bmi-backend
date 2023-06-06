@@ -30,7 +30,7 @@ dbConnect();
 const userRoutes = require("./routes/user-routes");
 
 app.get("/", function (req, res) {
-  res.send(`BMI Server is live`);
+  res.send(`Tenigold BMI Server is live`);
 });
 
 app.use("/user", userRoutes.routes);
